@@ -8,6 +8,11 @@ description: 'Action that provides repositories with the necessary tools and doc
 #outputs:
 #  time: # id of output
 #    description: 'The time we greeted you'
+#runs:
+#  using: 'node16'
+#  main: 'index.js'
 runs:
-  using: 'node16'
-  main: 'index.js'
+  using: "composite"
+  steps:
+    - run: echo Hello guillermo
+      shell: bash
