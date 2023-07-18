@@ -17,7 +17,7 @@ runs:
     - name: Add-Labels
       env:
         GH_TOKEN: ${{ inputs.GH_TOKEN }}
-      run: ./Scripts/AddLabels.sh
+      run: addlabels.sh
       shell: bash
       
       
