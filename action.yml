@@ -30,7 +30,8 @@ runs:
         curl -s "$url_file_labels"
         while IFS= read -r line;
         do
-         echo "$line"
+         IFS=";" read -ra partes <<< "$line"
+         echo partes[0]
         done
       shell: bash
       
