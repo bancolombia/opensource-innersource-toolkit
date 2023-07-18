@@ -23,7 +23,8 @@ runs:
         #gh label list
         #gh label create prueba --description "prueba action" --color E99695
         url_file_labels="https://github.com/bancolombia/action-innersource-toolkit/raw/main/Configurations/labels.txt"
-        curl "$url_file_labels"
+        echo $url_file_labels
+        curl $url_file_labels
         #while IFS= read -r line;
         #do
          # echo "$line"
