@@ -19,8 +19,6 @@ runs:
     - name: Pru
       run: |
         ls
-        cd..
-        ls
       shell: bash
 
       
