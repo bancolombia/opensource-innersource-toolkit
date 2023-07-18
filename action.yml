@@ -4,13 +4,6 @@ inputs:
   GH_TOKEN:  #ID de token GitHub
     description: 'Token GitHub'
     required: true
-    #default: 'World'
-#outputs:
-#  time: # id of output
-#    description: 'The time we greeted you'
-#runs:
-#  using: 'node16'
-#  main: 'index.js'
 runs:
   using: "composite"
   steps:
@@ -25,6 +18,11 @@ runs:
       env:
         GH_TOKEN: ${{ inputs.GH_TOKEN }}
       run: addlabels.sh
+      shell: bash
+    - name: add type issues
+      env:
+        GH_TOKEN: ${{ inputs.GH_TOKEN }}
+      run: addtypeissues.sh
       shell: bash
 
       
