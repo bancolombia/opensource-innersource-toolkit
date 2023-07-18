@@ -14,7 +14,9 @@ description: 'Action that provides repositories with the necessary tools and doc
 runs:
   using: "composite"
   steps:
-    - run: |
+    - name: Step1
+      run: |
         git branch
+        ls
       shell: bash
       
