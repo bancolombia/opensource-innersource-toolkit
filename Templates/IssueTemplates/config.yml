@@ -1,0 +1,4 @@
+contact_links:
+  - name: Soporte
+    url: https://github.com/${{URLReplace}}/discussions
+    about: Solicite soporte o ayuda
