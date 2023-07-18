@@ -1,4 +1,4 @@
-Doc;Mejoras o adiciones a la documentación.;#0075ca
+Doc ; Mejoras o adiciones a la documentación.;#0075ca
 Duplicado;El issue ya existe;#cfd3d7
 Error;Reporte de algo que no funciona;#d73a4a
 Facil;Un issue facil y sencillo para iniciar contribucciones;#7057ff
