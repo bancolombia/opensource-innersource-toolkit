@@ -24,17 +24,7 @@ runs:
         #gh label create prueba --description "prueba action" --color E99695
         url_file_labels="https://raw.githubusercontent.com/bancolombia/action-innersource-toolkit/0a126b4e10487a1037e0f4e5eb57f08844176d37/Configurations/labels.txt"
         curl -s "$url_file_labels"
-        while IFS= read -r line;
-        do
-         IFS_antiguo=$IFS
-         IFS=" ; " 
-         read -ra partes <<< "$line"
-         IFS=$IFS_antiguo
-         for parte in "${partes[@]}"; do
-           echo "1"
-           echo "$parte"
-         done
-        done
+       
       shell: bash
       
       
