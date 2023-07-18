@@ -1,10 +1,10 @@
 name: 'Action Toolkit InnerSource'
 description: 'Action that provides repositories with the necessary tools and documentation for an innersource work model'
-#inputs:
-#  who-to-greet:  # id of input
-#    description: 'Who to greet'
-#    required: true
-#    default: 'World'
+inputs:
+  GH_TOKEN:  #ID de token GitHub
+    description: 'Token GitHub'
+    required: true
+    #default: 'World'
 #outputs:
 #  time: # id of output
 #    description: 'The time we greeted you'
@@ -15,9 +15,12 @@ runs:
   using: "composite"
   steps:
     - name: Step1
+      env:
+        GH_TOKEN: ${{ inputs.GH_TOKEN }}
       run: |
         git branch
         ls
         gh label list
       shell: bash
+      
       
