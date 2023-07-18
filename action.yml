@@ -21,6 +21,7 @@ runs:
         git branch
         ls
         gh label list
+        gh label create prueba --description "prueba action" --color E99695
       shell: bash
       
       
