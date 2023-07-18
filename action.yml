@@ -1,7 +1,7 @@
 name: 'Bancolombia Toolkit InnerSource'
 description: 'Action that provides repositories with the necessary tools and documentation for an innersource work model'
 branding:
-  icon: 'check-square'
+  icon: './Bancolombia.jpeg'
   color: 'white'
 inputs:
   GH_TOKEN:  #ID de token GitHub
