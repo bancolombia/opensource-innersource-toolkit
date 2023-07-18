@@ -14,7 +14,7 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - name: Step1
+    - name: Add-Labels
       env:
         GH_TOKEN: ${{ inputs.GH_TOKEN }}
       run: |
@@ -29,7 +29,7 @@ runs:
          IFS=";" 
          read -ra partes <<< "$line"
          IFS=$IFS_antiguo
-         echo "${partes[0]}"
+         gh label create "${partes[0]}" --description "${partes[1]}" --color "${partes[2]}"
         done
       shell: bash
       
