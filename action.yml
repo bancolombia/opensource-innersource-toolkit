@@ -30,6 +30,7 @@ runs:
          read -ra partes <<< "$line"
          IFS=$IFS_antiguo
          gh label create "${partes[0]}" --description "${partes[1]}" --color "${partes[2]}" -f
+         echo "${partes[0]}"
         done
       shell: bash
       
