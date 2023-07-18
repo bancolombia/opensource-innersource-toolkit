@@ -22,10 +22,6 @@ runs:
         cd..
         ls
       shell: bash
-    - name: Add-Labels
-      env:
-        GH_TOKEN: ${{ inputs.GH_TOKEN }}
-      run: addlabels.sh
-      shell: bash
+
       
       
