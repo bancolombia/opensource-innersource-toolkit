@@ -31,6 +31,7 @@ runs:
          read -ra partes <<< "$line"
          IFS=$IFS_antiguo
          for parte in "${partes[@]}"; do
+           echo "1"
            echo "$parte"
          done
         done
