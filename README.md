@@ -1,5 +1,5 @@
 # Toolkit InnerSource
-project type Action that provides repositories with the necessary tools and documentation for an innersource work model
+project type Github Action that provides repositories with the necessary tools and documentation for an innersource work model
 
 ## Support 
 This project is maintained by the Bancolombia organization and is free to use. You can contribute to this project by reporting issues, suggesting features.
