@@ -34,7 +34,9 @@ runs:
          IFS=";" 
          read -ra partes <<< "$line"
          IFS=$IFS_antiguo
-         echo "${partes[0]}"
+         for parte in "${partes[@]}"; do
+           echo "$parte"
+         done
         done
       shell: bash
       
