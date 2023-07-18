@@ -19,7 +19,7 @@ runs:
     - name: Pru
       run: |
         git branch
-        cd ..
+        cd ../..
         ls
       shell: bash
     - name: add labels
