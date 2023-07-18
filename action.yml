@@ -16,10 +16,12 @@ runs:
   steps:
     - run: echo "${{ github.action_path }}" >> $GITHUB_PATH
       shell: bash
-    - run: |
+    - name: Pru
+      run: |
         ls
         cd..
         ls
+      shell: bash
     - name: Add-Labels
       env:
         GH_TOKEN: ${{ inputs.GH_TOKEN }}
