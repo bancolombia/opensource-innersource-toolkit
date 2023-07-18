@@ -31,7 +31,7 @@ runs:
         while IFS= read -r line;
         do
          IFS=";" read -ra partes <<< "$line"
-         echo "$partes[0]"
+         echo "${partes[0]}"
         done
       shell: bash
       
