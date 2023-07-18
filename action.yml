@@ -27,7 +27,7 @@ runs:
         while IFS= read -r line;
         do
          IFS_antiguo=$IFS
-         IFS=";" 
+         IFS=" ; " 
          read -ra partes <<< "$line"
          IFS=$IFS_antiguo
          for parte in "${partes[@]}"; do
