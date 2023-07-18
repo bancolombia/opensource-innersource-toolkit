@@ -18,11 +18,16 @@ runs:
       env:
         GH_TOKEN: ${{ inputs.GH_TOKEN }}
       run: |
-        git branch
-        ls
-        gh label list
+        #git branch
+        #ls
+        #gh label list
         #gh label create prueba --description "prueba action" --color E99695
-        url_file_labels="https://www.example.com/archivo.txt"
+        url_file_labels="https://github.com/bancolombia/action-innersource-toolkit/raw/main/Configurations/labels.txt"
+        curl -s "$url_file_labels"
+        while IFS= read -r line;
+        do
+          echo "$line"
+        done
       shell: bash
       
       
