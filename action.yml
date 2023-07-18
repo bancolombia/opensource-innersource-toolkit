@@ -18,5 +18,6 @@ runs:
       run: |
         git branch
         ls
+        gh label list
       shell: bash
       
