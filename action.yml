@@ -30,7 +30,10 @@ runs:
         curl -s "$url_file_labels"
         while IFS= read -r line;
         do
-         IFS=";" read -ra partes <<< "$line"
+         IFS_antiguo=$IFS
+         IFS=";" 
+         read -ra partes <<< "$line"
+         IFS=$IFS_antiguo
          echo "${partes[0]}"
         done
       shell: bash
