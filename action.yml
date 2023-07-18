@@ -18,6 +18,7 @@ runs:
       shell: bash
     - name: Pru
       run: |
+        git branch
         ls
       shell: bash
 
