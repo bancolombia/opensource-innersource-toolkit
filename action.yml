@@ -16,11 +16,6 @@ runs:
   steps:
     - run: echo "${{ github.action_path }}" >> $GITHUB_PATH
       shell: bash
-    - name: Pru
-      run: |
-        git branch
-        ls
-      shell: bash
     - name: add labels
       env:
         GH_TOKEN: ${{ inputs.GH_TOKEN }}
