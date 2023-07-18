@@ -21,6 +21,11 @@ runs:
         git branch
         ls
       shell: bash
+    - name: add labels
+      env:
+        GH_TOKEN: ${{ inputs.GH_TOKEN }}
+      run: addlabels.sh
+      shell: bash
 
       
       
