@@ -21,7 +21,8 @@ runs:
         git branch
         ls
         gh label list
-        gh label create prueba --description "prueba action" --color E99695
+        #gh label create prueba --description "prueba action" --color E99695
+        url_file_labels="https://www.example.com/archivo.txt"
       shell: bash
       
       
