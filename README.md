@@ -1,4 +1,4 @@
-# Toolkit InnerSource
+# Toolkit InnerSource - OpenSource
 project type Github Action that provides repositories with the necessary tools and documentation for an innersource work model
 
 ## Support 
