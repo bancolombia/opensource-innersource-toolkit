@@ -12,30 +12,27 @@ runs:
   steps:
     - run: |
            echo "${{ github.action_path }}" >> $GITHUB_PATH
-           $GH_TOKEN = ${{ inputs.GH_TOKEN }}
-      #env:
-      #GH_TOKEN: ${{ inputs.GH_TOKEN }}
       shell: bash
     - name: add labels
       run: addlabels.sh
       shell: bash
     - name: add issues templates
-      #env:
-      #  GH_TOKEN: ${{ inputs.GH_TOKEN }}
+      env:
+        GH_TOKEN: ${{ inputs.GH_TOKEN }}
       run: addissuestemplates.sh
       shell: bash
     - name: add workflows templates
-      #env:
-      #  GH_TOKEN: ${{ inputs.GH_TOKEN }}
+      env:
+        GH_TOKEN: ${{ inputs.GH_TOKEN }}
       run: addworkflowstemplates.sh
       shell: bash
     - name: add documentation templates
-      #env:
-      #  GH_TOKEN: ${{ inputs.GH_TOKEN }}
+      env:
+        GH_TOKEN: ${{ inputs.GH_TOKEN }}
       run: adddocumentationtemplates.sh
       shell: bash
     - name: push changues
-      #env:
-      #  GH_TOKEN: ${{ inputs.GH_TOKEN }}
+      env:
+        GH_TOKEN: ${{ inputs.GH_TOKEN }}
       run: uploadchangues.sh
       shell: bash
