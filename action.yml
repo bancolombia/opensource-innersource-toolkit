@@ -7,16 +7,14 @@ inputs:
   GH_TOKEN:  #ID de token GitHub
     description: 'Token GitHub'
     required: true
-env:
-  GH_TOKEN: ${{ inputs.GH_TOKEN }}
 runs:
   using: "composite"
   steps:
     - run: echo "${{ github.action_path }}" >> $GITHUB_PATH
       shell: bash
     - name: add labels
-      #env:
-      #  GH_TOKEN: ${{ inputs.GH_TOKEN }}
+      env:
+        GH_TOKEN: ${{ inputs.GH_TOKEN }}
       run: addlabels.sh
       shell: bash
     - name: add issues templates
