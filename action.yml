@@ -10,9 +10,11 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - run: echo "${{ github.action_path }}" >> $GITHUB_PATH
-      env:
-        GH_TOKEN: ${{ inputs.GH_TOKEN }}
+    - run: |
+           echo "${{ github.action_path }}" >> $GITHUB_PATH
+           echo "${{ inputs.GH_TOKEN  }}" >> $GH_TOKEN
+      #env:
+      #GH_TOKEN: ${{ inputs.GH_TOKEN }}
       shell: bash
     - name: add labels
       run: addlabels.sh
