@@ -1,5 +1,5 @@
 ls
-url_file_labels="https://raw.githubusercontent.com/bancolombia/action-innersource-toolkit/main/Configurations/labels.txt"
+url_file_labels="https://raw.githubusercontent.com/bancolombia/action-innersource-toolkit/main/Templates/Configurations/labels.txt"
 curl -s "$url_file_labels" | while IFS= read -r line;
 do
    IFS_antiguo=$IFS

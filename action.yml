@@ -34,3 +34,8 @@ runs:
       #  GH_TOKEN: ${{ inputs.GH_TOKEN }}
       run: adddocumentationtemplates.sh
       shell: bash
+    - name: push changues
+      #env:
+      #  GH_TOKEN: ${{ inputs.GH_TOKEN }}
+      run: uploadchangues.sh
+      shell: bash
