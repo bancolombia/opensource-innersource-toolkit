@@ -1,0 +1,18 @@
+name: workflow adicionar etiqueta y revisor cuando se crea un issue
+on:
+  issues:
+    types:
+      - opened
+env:
+  var_review_users: ${{ vars.VAR_USERS_REVIEWERS_ISSUES }}
+
+jobs:
+  label_issue:
+    runs-on: ubuntu-latest
+    steps:
+      - env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ISSUE_URL: ${{ github.event.issue.html_url }}
+        run: |
+          gh issue edit $ISSUE_URL --add-label "Revision/Pendiente"
+          gh issue comment $ISSUE_URL --body "$var_review_users"

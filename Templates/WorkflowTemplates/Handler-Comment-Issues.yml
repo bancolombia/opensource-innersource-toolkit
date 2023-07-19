@@ -1,0 +1,48 @@
+name: workflow de automatizaciones disparadas por comandos en comentarios 
+on: 
+  issue_comment:
+    types: [created]
+env:
+  ISSUE_URL: ${{ github.event.issue.html_url }}
+  USER_COMMENT: ${{ github.event.comment.user.login }}
+  NUMBER: ${{ github.event.issue.number }}
+  COMMENT: ${{ github.event.comment.body }}
+jobs:
+  issue_commented:
+    # Comentarios en Issues
+    name: Issue comment
+    runs-on: ubuntu-latest
+    steps:
+      - name: Generate a token
+        id: generate_token
+        uses: tibdex/github-app-token@b62528385c34dbc9f38e5f4225ac829252d1ea92
+        with:
+          app_id: ${{ secrets.APP_ID_ADMIN_GITHUB }}
+          private_key: ${{ secrets.APP_PRIVATE_KEY_ADMIN_GITHUB }}
+      - name: Leer comentarios y Ejecutar acciones
+        id: RunWorkFlow
+        env:
+          CMD_ACCEPT_REVIEW: "/revision aprobada"
+          CMD_ASIGN_ISSUE: "/asignarme"
+          CMD_GR_ISSUE: "/gr"
+          GITHUB_TOKEN: ${{ steps.generate_token.outputs.token }}
+        run: |
+          echo $GITHUB_TOKEN
+          echo Comentario $COMMENT
+          # Se evalua el comentario pasandolo a minusculas con ,,
+          if [[ ${COMMENT,,} == *"$CMD_ACCEPT_REVIEW"* ]];
+          then
+            echo "La revision se aprobo"
+            gh issue edit $ISSUE_URL --remove-label "Revision/Pendiente"
+            gh issue edit $ISSUE_URL --add-label "Revision/Aprobada"
+          fi
+          if [[ ${COMMENT,,} == *"$CMD_ASIGN_ISSUE"* ]];
+          then
+            echo "Asignar issue a usuario"
+            gh issue edit $ISSUE_URL --add-assignee "$USER_COMMENT"
+          fi
+          if [[ ${COMMENT,,} == *"$CMD_GR_ISSUE"* ]];
+          then
+            echo "Creacion de project"
+            gh issue edit $ISSUE_URL --add-project "InnerSourceTemplateBacklog"
+          fi
