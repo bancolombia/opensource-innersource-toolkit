@@ -1,4 +1,4 @@
-name: 'Bancolombia Toolkit InnerSource'
+name: 'Bancolombia Toolkit InnerSource-OpenSource'
 description: 'Action that provides repositories with the necessary tools and documentation for an innersource work model'
 branding:
   icon: 'check-square'
@@ -6,6 +6,9 @@ branding:
 inputs:
   GH_TOKEN:  #ID de token GitHub
     description: 'Token GitHub'
+    required: true
+  TYPE_REPOSITORY:  #Tipo de repositorio OpenSource - InnerSource
+    description: 'Tipo de repositorio OpenSource o InnerSource'
     required: true
 runs:
   using: "composite"

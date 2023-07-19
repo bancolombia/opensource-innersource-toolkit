@@ -9,3 +9,6 @@ do
    gh label create "${partes[0]}" --description "${partes[1]}" --color "${partes[2]}" -f
    echo "${partes[0]}"
 done
+
+#Habilitar Discussions y Wiki
+gh repo edit --enable-discussions --enable-wiki
