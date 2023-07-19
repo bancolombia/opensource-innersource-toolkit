@@ -1,4 +1,4 @@
-name: 'Toolkit InnerSource'
+name: 'Bancolombia Toolkit InnerSource'
 description: 'Action that provides repositories with the necessary tools and documentation for an innersource work model'
 branding:
   icon: 'check-square'
@@ -29,5 +29,8 @@ runs:
       #  GH_TOKEN: ${{ inputs.GH_TOKEN }}
       run: addworkflowstemplates.sh
       shell: bash
-      
-      
+    - name: add documentation templates
+      #env:
+      #  GH_TOKEN: ${{ inputs.GH_TOKEN }}
+      run: adddocumentationtemplates.sh
+      shell: bash
