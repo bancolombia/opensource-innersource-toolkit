@@ -2,7 +2,7 @@
 
 ![Modelo de Gobierno](Roles-ES.png)
 
-| Role             | Responsabilidades                                            | 
+| Roles             | Responsabilidades                                            | 
 | ---------------- | ------------------------------------------------------------ | 
 | Product Owners | liderar la iniciativa open y sus proyectos, tener una visión a corto, mediano y largo plazo de la iniciativa y los proyectos. Tener criterio a la hora de tomar decisiones. abdicar cuando sea por el bien de la comunidad y del proyecto. 
 | Mantainers           |  Los mantenedores tienen una mayor autoridad y responsabilidad en la gestión y coordinación general del proyecto.
