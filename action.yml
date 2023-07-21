@@ -42,5 +42,6 @@ runs:
     - name: push changues
       env:
         GH_TOKEN: ${{ inputs.GH_TOKEN }}
+        USERS_REVIEWERS: ${{ inputs.USERS_REVIEWERS }}
       run: uploadchangues.sh
       shell: bash
