@@ -7,8 +7,11 @@ inputs:
   GH_TOKEN:  #ID de token GitHub
     description: 'Token GitHub'
     required: true
-  TYPE_REPOSITORY:  #Tipo de repositorio OpenSource - InnerSource
-    description: 'Tipo de repositorio OpenSource o InnerSource'
+  TYPE_REPOSITORY:  
+    description: 'Repository type opensource or innersource'
+    required: true
+  USERS_REVIEWERS:  
+    description: 'Issue Reviewers separated by space'
     required: true
 runs:
   using: "composite"

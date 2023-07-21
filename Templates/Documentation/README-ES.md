@@ -37,4 +37,10 @@ Esta sección debe documentar (o vincular a la documentación) sobre todas las c
 
 Idealmente, también incluya información sobre cómo es el proceso preferido para los cambios para el proyecto: ¿Deberían los colaboradores primero abrir un problema y enviar una propuesta, o son bienvenidos a enviar cambios de inmediato? ¿Qué es importante para usted al revisar las contribuciones?
 Además, debe describir los valores de diseño que desea seguir en el proyecto. Hacerlos explícitos a menudo ayuda a resolver las compensaciones más rápida y fácilmente. Además, ayuda a que los cambios en supuestos implícitos sean transparentes.
-Con el tiempo notarás que esta sección crece sustancialmente. En ese caso, piense en mover la información a archivos separados, por ejemplo, CONTRIBUTING.mday TESTING.md.
+Con el tiempo notarás que esta sección crece sustancialmente. En ese caso, piense en mover la información a archivos separados, por ejemplo, CONTRIBUTING.md y TESTING.md.
+
+## Modelo de Gobierno
+
+En esta sección puede dar un resumen de que estructura de roles , areas y responsabilidades del proyecto. El toolkit te sugiere el siguiente texto:
+
+El proyecto "Nombre del proyecto" se rige bajo una estructura de responsabilidades y lineamientos eticos de la cual usted puede encontrar mas detalle aqui [Modelo de Gobierno](GOVERNANCE.md)
