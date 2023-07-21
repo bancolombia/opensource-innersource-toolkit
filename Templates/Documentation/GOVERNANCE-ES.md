@@ -9,5 +9,4 @@
 | Trusted Commiter         |  los "trusted committers" son colaboradores que tienen la capacidad de enviar cambios directamente al repositorio del proyecto y revisar las contribuciones de otros, pero su autoridad es limitada en comparación con los mantenedores |
 Contributors | Contribuir activamente con *commits*, *reviews* | 
 Community Leader  | Promueve *participacion*, *colaboracion* , brinda herramientas necesarias que faciliten comunicación con la comunidad |
-|
 
