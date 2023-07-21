@@ -1,4 +1,6 @@
-# Miembros de la comunidad
+# Modelo de Gobierno
+
+## Roles y Miembros de la comunidad
 
 ![Modelo de Gobierno](Roles-ES.png)
 
