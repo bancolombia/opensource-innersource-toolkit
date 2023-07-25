@@ -27,7 +27,7 @@ arrayIssueTemplates=("1-report-issue" "2-request-new-feature" "3-documentation")
 #Download template issues
 for filetemplate in "${arrayIssueTemplates[@]}"
 do
-    if [[ -f ".github/ISSUE_TEMPLATE/$filetemplate.md"]];
+    if [[ -f ".github/ISSUE_TEMPLATE/$filetemplate.md" ]];
     then
         echo "El archivo $filetemplate.md existe"
     else
