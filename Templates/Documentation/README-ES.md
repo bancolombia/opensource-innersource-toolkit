@@ -41,6 +41,6 @@ Con el tiempo notarás que esta sección crece sustancialmente. En ese caso, pie
 
 ## Modelo de Gobierno
 
-En esta sección puede dar un resumen de que estructura de roles , areas y responsabilidades del proyecto. El toolkit te sugiere el siguiente texto:
+En esta sección puede dar un resumen de la estructura de roles , areas y responsabilidades del proyecto. El toolkit te sugiere el siguiente texto:
 
 El proyecto "Nombre del proyecto" se rige bajo una estructura de responsabilidades y lineamientos eticos de la cual usted puede encontrar mas detalle aqui [Modelo de Gobierno](GOVERNANCE.md)

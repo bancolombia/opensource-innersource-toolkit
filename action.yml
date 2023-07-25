@@ -13,35 +13,20 @@ inputs:
   USERS_REVIEWERS:  
     description: 'Issue Reviewers separated by space'
     required: true
+  TEMPLATE_LANGUAGE:  
+    description: 'Language of templates ES (spanish) or EN (english)'
+    required: true
 runs:
   using: "composite"
   steps:
     - run: |
            echo "${{ github.action_path }}" >> $GITHUB_PATH
       shell: bash
-    - name: add labels
-      env:
-          GH_TOKEN: ${{ inputs.GH_TOKEN }}
-      run: addlabels.sh
-      shell: bash
-    - name: add issues templates
+    - name: install templates and workflows
       env:
         GH_TOKEN: ${{ inputs.GH_TOKEN }}
-      run: addissuestemplates.sh
-      shell: bash
-    - name: add workflows templates
-      env:
-        GH_TOKEN: ${{ inputs.GH_TOKEN }}
-        USERS_REVIEWERS: ${{ inputs.USERS_REVIEWERS }}
-      run: addworkflowstemplates.sh
-      shell: bash
-    - name: add documentation templates
-      env:
-        GH_TOKEN: ${{ inputs.GH_TOKEN }}
-      run: adddocumentationtemplates.sh
-      shell: bash
-    - name: push changues
-      env:
-        GH_TOKEN: ${{ inputs.GH_TOKEN }}
-      run: uploadchangues.sh
+        VAR_USERS_REVIEWERS: ${{ inputs.USERS_REVIEWERS }}
+        VAR_TEMPLATE_LANGUAGE: ${{ inputs.TEMPLATE_LANGUAGE }}
+        VAR_TYPE_REPOSITORY: ${{ inputs.TYPE_REPOSITORY }}
+      run: scriptsinstalltemplates.sh
       shell: bash
