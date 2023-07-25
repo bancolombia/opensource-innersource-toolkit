@@ -23,7 +23,7 @@ done
 #enable Discussions and Wiki
 #gh repo edit --enable-discussions --enable-wiki
 
-arrayIssueTemplates = ("1-report-issue" "2-request-new-feature" "3-documentation")
+arrayIssueTemplates=("1-report-issue" "2-request-new-feature" "3-documentation")
 #Download template issues
 for filetemplate in "${arrayIssueTemplates[@]}"
 do
