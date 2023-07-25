@@ -23,7 +23,25 @@ done
 #enable Discussions and Wiki
 #gh repo edit --enable-discussions --enable-wiki
 
+arrayIssueTemplates = ("1-report-issue","2-request-new-feature","3-documentation")
 #Download template issues
+for filetemplate in "${arrayIssueTemplates[@]}"
+do
+    if ! [[ -f ".github/ISSUE_TEMPLATE/$filetemplate.md"]]; then
+        echo "El archivo $filetemplate.md existe"
+    else
+        echo "El archivo $filetemplate.md no existe"
+        wget -O .github/ISSUE_TEMPLATE/$filetemplate.md https://raw.githubusercontent.com/bancolombia/action-innersource-toolkit/main/Templates/IssueTemplates/$filetemplate-$VAR_TEMPLATE_LANGUAGE.md
+    fi
+done
+
+#push changues
+git config user.name bot-bancolombia-toolkit
+git config user.email oficina_open_source@bancolombia.com.co
+git add .
+git commit -m "Upload Changues bot action bancolombia toolkit innersource"
+git push
+
 #mkdir -p .github/ISSUE_TEMPLATE/
 #wget -O .github/ISSUE_TEMPLATE/1-reportar-error.md https://raw.githubusercontent.com/bancolombia/action-innersource-toolkit/main/Templates/IssueTemplates/1-reportar-error.md
 #wget -O .github/ISSUE_TEMPLATE/2-solicitar-nueva-funcionalidad-o-mejora.md https://raw.githubusercontent.com/bancolombia/action-innersource-toolkit/main/Templates/IssueTemplates/2-solicitar-nueva-funcionalidad-o-mejora.md
