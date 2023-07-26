@@ -21,15 +21,11 @@ done
 #enable Discussions and Wiki
 gh repo edit --enable-discussions --enable-wiki --enable-projects=true
 
-echo $VAR_NAME_REPOSITORY
-#gh project create --owner $VAR_NAME_REPOSITORY_OWNER --title "BacklogFirstReview" 
-gh api \
-  --method POST \
-  -H "Accept: application/vnd.github+json" \
-  -H "X-GitHub-Api-Version: 2022-11-28" \
-  /repos/$VAR_NAME_REPOSITORY/projects \
-  -f name='TestBacklogFirstReview' \
- -f body='Developer documentation project for the developer site.' 
+REPO_NAME=gh repo view $VAR_NAME_REPOSITORY --json name --jq '.name'
+
+echo "name repo $REPO_NAME"
+
+gh project create --owner $VAR_NAME_REPOSITORY_OWNER --title "Board/Reviews-$REPO_NAME" 
 
 #Download template issues
 arrayIssueTemplates=("1-report-issue" "2-request-new-feature" "3-documentation")

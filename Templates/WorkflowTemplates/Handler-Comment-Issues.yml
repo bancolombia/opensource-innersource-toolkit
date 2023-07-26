@@ -13,19 +13,13 @@ jobs:
     name: Issue comment
     runs-on: ubuntu-latest
     steps:
-      - name: Generate a token
-        id: generate_token
-        uses: tibdex/github-app-token@b62528385c34dbc9f38e5f4225ac829252d1ea92
-        with:
-          app_id: ${{ secrets.APP_ID_ADMIN_GITHUB }}
-          private_key: ${{ secrets.APP_PRIVATE_KEY_ADMIN_GITHUB }}
       - name: Leer comentarios y Ejecutar acciones
         id: RunWorkFlow
         env:
           CMD_ACCEPT_REVIEW: "/revision aprobada"
           CMD_ASIGN_ISSUE: "/asignarme"
           CMD_GR_ISSUE: "/gr"
-          GITHUB_TOKEN: ${{ steps.generate_token.outputs.token }}
+          #GITHUB_TOKEN: ${{ secrets.PERSONAL_GITHUB_TOOKEN }}
         run: |
           echo $GITHUB_TOKEN
           echo Comentario $COMMENT
