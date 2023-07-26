@@ -12,7 +12,6 @@ jobs:
     # comments in Issues
     name: Issue comment
     runs-on: ubuntu-latest
-    if: ${{ github.actor == 'dependabot[bot]' }}
     steps:
       - name: Generate a token of Github APP
         id: generate_token
