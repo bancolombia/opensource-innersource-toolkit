@@ -21,7 +21,7 @@ done
 #enable Discussions and Wiki
 gh repo edit --enable-discussions --enable-wiki --enable-projects=true
 
-REPO_NAME=gh repo view $VAR_NAME_REPOSITORY --json name --jq '.name'
+REPO_NAME=$(gh repo view $VAR_NAME_REPOSITORY --json name --jq '.name')
 
 echo "name repo $REPO_NAME"
 
