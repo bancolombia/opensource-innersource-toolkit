@@ -27,17 +27,21 @@ gh repo edit --enable-discussions --enable-wiki --enable-projects=true
 #Create project to reviews
 REPO_NAME=$(gh repo view $VAR_NAME_REPOSITORY --json name --jq '.name')
 
-#gh project create --owner $VAR_NAME_REPOSITORY_OWNER --title "Backlog/Reviews-$REPO_NAME" 
-#gh project create --owner $VAR_NAME_REPOSITORY_OWNER --title "Backlog/ToWork-$REPO_NAME" 
+
 variables=$(gh variable list -R $VAR_NAME_REPOSITORY)
-TEMP_VAR="VAR_PROJECT_NAME_REVIEWERS_ISSUS"
+TEMP_VAR="VAR_PROJECT_NAME_REVIEWERS_ISSUES"
 if [[ ${variables,,} =~ ${TEMP_VAR,,} ]];    
 then
-    echo "el project existe"
+    echo "Projects Backlog/Reviews and Backlog/ToWork already exist"
+else
+    echo "Toolkit will create projects"
+    gh project create --owner $VAR_NAME_REPOSITORY_OWNER --title "Backlog/Reviews-$REPO_NAME" 
+    gh project create --owner $VAR_NAME_REPOSITORY_OWNER --title "Backlog/ToWork-$REPO_NAME" 
+    gh variable set VAR_PROJECT_NAME_REVIEWERS_ISSUES --body "Backlog/Reviews-$REPO_NAME"
+    gh variable set VAR_PROJECT_NAME_TO_WORK --body "Backlog/ToWork-$REPO_NAME"
 fi
 
-gh variable set VAR_PROJECT_NAME_REVIEWERS_ISSUES --body "Backlog/Reviews-$REPO_NAME"
-gh variable set VAR_PROJECT_NAME_TO_WORK --body "Backlog/ToWork-$REPO_NAME"
+
 #Download template issues
 arrayIssueTemplates=("1-report-issue" "2-request-new-feature" "3-documentation")
 mkdir -p .github/ISSUE_TEMPLATE/
@@ -71,8 +75,14 @@ wget -O .github/workflows/Handler-Comment-Issues.yml https://raw.githubuserconte
 wget -O .github/workflows/Handler-Issue-Creation.yml https://raw.githubusercontent.com/bancolombia/action-innersource-toolkit/main/Templates/WorkflowTemplates/Handler-Issue-Creation-$VAR_TEMPLATE_LANGUAGE.yml
 
 
-
-gh variable set VAR_USERS_REVIEWERS_ISSUES --body "$VAR_USERS_REVIEWERS"
+TEMP_VAR="VAR_USERS_REVIEWERS_ISSUES"
+if [[ ${variables,,} =~ ${TEMP_VAR,,} ]];    
+then
+    echo "The var VAR_USERS_REVIEWERS_ISSUES already exist"
+else
+    echo "Toolkit will create VAR_USERS_REVIEWERS_ISSUES var"
+    gh variable set VAR_USERS_REVIEWERS_ISSUES --body "$VAR_USERS_REVIEWERS"
+fi
 
 #push changues
 git config user.name bot-bancolombia-toolkit
