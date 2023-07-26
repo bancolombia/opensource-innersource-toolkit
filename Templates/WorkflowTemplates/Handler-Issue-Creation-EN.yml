@@ -23,5 +23,5 @@ jobs:
           VAR_PROJECT_NAME_REVIEWERS_ISSUES: "${{ vars.VAR_PROJECT_NAME_REVIEWERS_ISSUES }}"
         run: |
           gh issue edit $ISSUE_URL --add-label "Review/Pending"
-          gh issue comment $ISSUE_URL --body "$var_review_users"
+          gh issue comment $ISSUE_URL --body "Please your review $var_review_users"
           gh issue edit $ISSUE_URL --add-project "$VAR_PROJECT_NAME_REVIEWERS_ISSUES"
