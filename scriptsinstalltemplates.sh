@@ -20,8 +20,8 @@ done
 
 #enable Discussions and Wiki
 gh repo edit --enable-discussions --enable-wiki
-echo "owner $VAR_NAME_REPOSITORY_OWNER"
-gh project create --owner $VAR_NAME_REPOSITORY_OWNER --title "BacklogFirstReview" 
+
+gh project create --owner $VAR_NAME_REPOSITORY --title "BacklogFirstReview" 
 
 #Download template issues
 arrayIssueTemplates=("1-report-issue" "2-request-new-feature" "3-documentation")
