@@ -19,24 +19,30 @@ jobs:
           CMD_ACCEPT_REVIEW: "/revision aprobada"
           CMD_ASIGN_ISSUE: "/asignarme"
           CMD_GR_ISSUE: "/gr"
+          VAR_USERS_REVIEWERS: "${{ vars.VAR_USERS_REVIEWERS_ISSUES }}"
           #GITHUB_TOKEN: ${{ secrets.PERSONAL_GITHUB_TOOKEN }}
         run: |
           echo $GITHUB_TOKEN
           echo Comentario $COMMENT
           # Se evalua el comentario pasandolo a minusculas con ,,
-          if [[ ${COMMENT,,} == *"$CMD_ACCEPT_REVIEW"* ]];
+
+          if [[ ${USER_COMMENT,,} == *"$VAR_USERS_REVIEWERS"* ]];    
           then
-            echo "La revision se aprobo"
-            gh issue edit $ISSUE_URL --remove-label "Revision/Pendiente"
-            gh issue edit $ISSUE_URL --add-label "Revision/Aprobada"
+            if [[ ${COMMENT,,} == *"$CMD_ACCEPT_REVIEW"* ]];
+            then
+              gh issue edit $ISSUE_URL --remove-label "Revision/Pendiente"
+              gh issue edit $ISSUE_URL --add-label "Revision/Aprobada"
+            fi
+            if [[ ${COMMENT,,} == *"$CMD_GR_ISSUE"* ]];
+            then
+              echo "Creacion de project"
+              gh issue edit $ISSUE_URL --add-project "InnerSourceTemplateBacklog"
+            fi
+          else
+            echo "usuario no es revisor"
           fi
           if [[ ${COMMENT,,} == *"$CMD_ASIGN_ISSUE"* ]];
           then
-            echo "Asignar issue a usuario"
             gh issue edit $ISSUE_URL --add-assignee "$USER_COMMENT"
           fi
-          if [[ ${COMMENT,,} == *"$CMD_GR_ISSUE"* ]];
-          then
-            echo "Creacion de project"
-            gh issue edit $ISSUE_URL --add-project "InnerSourceTemplateBacklog"
-          fi
+      
