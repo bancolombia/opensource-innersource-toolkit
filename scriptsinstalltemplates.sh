@@ -1,4 +1,4 @@
-ESvar="ES"
+ESvar='ES'
 if [[ ${VAR_TEMPLATE_LANGUAGE,,} == *"$ESvar"* ]];
 then
     echo "list labels in spanish"
@@ -7,8 +7,6 @@ else
     echo "list labels in english"
     url_file_labels="https://raw.githubusercontent.com/bancolombia/action-innersource-toolkit/main/Templates/Configurations/labels-EN.txt"
 fi
-
-echo "LA url que tome es $url_file_labels"
 #Add labels
 curl -s "$url_file_labels" | while IFS= read -r line;
 do
