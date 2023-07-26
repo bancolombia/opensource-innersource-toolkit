@@ -21,8 +21,8 @@ done
 #enable Discussions and Wiki
 gh repo edit --enable-discussions --enable-wiki
 
-gh project create --owner $VAR_NAME_REPOSITORY --title "BacklogFirstReview" 
-
+gh project create --owner $VAR_NAME_REPOSITORY_OWNER --title "BacklogFirstReview" 
+gh project create "BacklogFirstReview2" 
 #Download template issues
 arrayIssueTemplates=("1-report-issue" "2-request-new-feature" "3-documentation")
 mkdir -p .github/ISSUE_TEMPLATE/
