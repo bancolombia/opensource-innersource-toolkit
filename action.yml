@@ -21,7 +21,6 @@ runs:
   steps:
     - run: |
            echo "${{ github.action_path }}" >> $GITHUB_PATH
-           echo "${{ github.repository }}"
       shell: bash
     - name: install templates and workflows
       env:
@@ -29,5 +28,6 @@ runs:
         VAR_USERS_REVIEWERS: ${{ inputs.USERS_REVIEWERS }}
         VAR_TEMPLATE_LANGUAGE: ${{ inputs.TEMPLATE_LANGUAGE }}
         VAR_TYPE_REPOSITORY: ${{ inputs.TYPE_REPOSITORY }}
+        VAR_NAME_REPOSITORY: ${{ github.repository }}
       run: scriptsinstalltemplates.sh
       shell: bash

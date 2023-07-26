@@ -1,4 +1,5 @@
-if [[ ${VAR_TEMPLATE_LANGUAGE,,} == *"ES"* ]];
+ESvar="ES"
+if [[ ${VAR_TEMPLATE_LANGUAGE,,} == *"$ESvar"* ]];
 then
     echo "list labels in spanish"
     url_file_labels="https://raw.githubusercontent.com/bancolombia/action-innersource-toolkit/main/Templates/Configurations/labels-ES.txt"
@@ -32,6 +33,8 @@ done
 
 wget -O .github/ISSUE_TEMPLATE/config.yml https://raw.githubusercontent.com/bancolombia/action-innersource-toolkit/main/Templates/IssueTemplates/config-$VAR_TEMPLATE_LANGUAGE..yml
 
+awk -v texttoreplace="@RepositoryName" -v textnew="$VAR_NAME_REPOSITORY" '{gsub(texttoreplace,textnew)} 1' ".github/ISSUE_TEMPLATE/config.yml" > tempfile && mv tempfile ".github/ISSUE_TEMPLATE/config.yml"
+
 #Download documentation
 arrayDocumentationTemplates=("CONTRIBUTING" "README" "GOVERNANCE")
 for filetemplate in "${arrayDocumentationTemplates[@]}"
@@ -52,7 +55,9 @@ mkdir -p .github/workflows/
 wget -O .github/workflows/Handler-Comment-Issues.yml https://raw.githubusercontent.com/bancolombia/action-innersource-toolkit/main/Templates/WorkflowTemplates/Handler-Comment-Issues.yml
 wget -O .github/workflows/Handler-Issue-Creation.yml https://raw.githubusercontent.com/bancolombia/action-innersource-toolkit/main/Templates/WorkflowTemplates/Handler-Issue-Creation.yml
 
-gh variable set VAR_USERS_REVIEWERS_ISSUES --body "$USERS_REVIEWERS"
+
+
+gh variable set VAR_USERS_REVIEWERS_ISSUES --body "$VAR_USERS_REVIEWERS"
 
 #push changues
 git config user.name bot-bancolombia-toolkit
