@@ -27,10 +27,14 @@ gh repo edit --enable-discussions --enable-wiki --enable-projects=true
 #Create project to reviews
 REPO_NAME=$(gh repo view $VAR_NAME_REPOSITORY --json name --jq '.name')
 
-gh project list
-
 #gh project create --owner $VAR_NAME_REPOSITORY_OWNER --title "Backlog/Reviews-$REPO_NAME" 
 #gh project create --owner $VAR_NAME_REPOSITORY_OWNER --title "Backlog/ToWork-$REPO_NAME" 
+secrets=$(gh secret list -R $VAR_NAME_REPOSITORY)
+# Filtrar la lista de secretos por nombre usando 'jq'
+secret_name="VAR_PROJECT_NAME_REVIEWERS_ISSUES"
+filtered_secrets=$(echo "$secrets" | jq --arg name "$secret_name" '.[] | select(.name == $name)')
+# Mostrar el resultado del filtrado
+echo "secreto nombre $filtered_secrets"
 
 gh variable set VAR_PROJECT_NAME_REVIEWERS_ISSUES --body "Backlog/Reviews-$REPO_NAME"
 gh variable set VAR_PROJECT_NAME_TO_WORK --body "Backlog/ToWork-$REPO_NAME"
