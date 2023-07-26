@@ -10,6 +10,7 @@ fi
 #Add labels
 curl -s "$url_file_labels" | while IFS= read -r line;
 do
+   echo "$line"
    IFS_antiguo=$IFS
    IFS=";" 
    read -ra partes <<< "$line"
