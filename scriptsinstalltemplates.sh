@@ -22,8 +22,8 @@ done
 gh repo edit --enable-discussions --enable-wiki
 
 #create project
-
-gh project create --owner monalisa --title "BacklogFirstReview2" 
+curl -X POST -H "Authorization: Bearer $GH_TOKEN" -d '{"query": "mutation { createProject(input: { name: \"BacklogFirstReview\" repositoryId: \"bancolombia/OPS_TemplateRepositoryInnerSource\" }) { project { id } } }" }' https://api.github.com/graphql
+#gh project create --owner monalisa --title "BacklogFirstReview2" 
 
 #Download template issues
 arrayIssueTemplates=("1-report-issue" "2-request-new-feature" "3-documentation")
