@@ -25,6 +25,7 @@ gh repo edit --enable-discussions --enable-wiki --enable-projects=true
 REPO_NAME=$(gh repo view $VAR_NAME_REPOSITORY --json name --jq '.name')
 gh project create --owner $VAR_NAME_REPOSITORY_OWNER --title "Board/Reviews-$REPO_NAME" 
 
+gh variable set VAR_PROJECT_NAME_REVIEWERS_ISSUES --body "Board/Reviews-$REPO_NAME"
 #Download template issues
 arrayIssueTemplates=("1-report-issue" "2-request-new-feature" "3-documentation")
 mkdir -p .github/ISSUE_TEMPLATE/

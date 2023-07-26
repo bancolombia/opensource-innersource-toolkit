@@ -22,27 +22,22 @@ jobs:
           VAR_USERS_REVIEWERS: "${{ vars.VAR_USERS_REVIEWERS_ISSUES }}"
           #GITHUB_TOKEN: ${{ secrets.PERSONAL_GITHUB_TOOKEN }}
         run: |
-          echo $GITHUB_TOKEN
-          echo Comentario $COMMENT
-          # Se evalua el comentario pasandolo a minusculas con ,,
-
-          if [[ ${USER_COMMENT,,} == *"$VAR_USERS_REVIEWERS"* ]];    
+          if [[ ${VAR_USERS_REVIEWERS,,} =~ ${USER_COMMENT,,} ]];    
           then
             if [[ ${COMMENT,,} == *"$CMD_ACCEPT_REVIEW"* ]];
             then
               gh issue edit $ISSUE_URL --remove-label "Revision/Pendiente"
               gh issue edit $ISSUE_URL --add-label "Revision/Aprobada"
             fi
-            if [[ ${COMMENT,,} == *"$CMD_GR_ISSUE"* ]];
-            then
-              echo "Creacion de project"
-              gh issue edit $ISSUE_URL --add-project "InnerSourceTemplateBacklog"
-            fi
+            #if [[ ${COMMENT,,} == *"$CMD_GR_ISSUE"* ]];
+            #then
+            #  echo "Creacion de project"
+            #  gh issue edit $ISSUE_URL --add-project "backlog work"
+            #fi
           else
-            echo "usuario no es revisor"
+            gh issue comment $ISSUE_URL --body "El usuario no tiene permisos suficientes para aprobar el issue"
           fi
           if [[ ${COMMENT,,} == *"$CMD_ASIGN_ISSUE"* ]];
           then
             gh issue edit $ISSUE_URL --add-assignee "$USER_COMMENT"
           fi
-      

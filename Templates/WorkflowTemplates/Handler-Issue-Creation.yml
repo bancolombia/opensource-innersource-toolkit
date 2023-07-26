@@ -13,6 +13,8 @@ jobs:
       - env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           ISSUE_URL: ${{ github.event.issue.html_url }}
+          VAR_PROJECT_NAME_REVIEWERS_ISSUES: "${{ vars.VAR_PROJECT_NAME_REVIEWERS_ISSUES }}"
         run: |
           gh issue edit $ISSUE_URL --add-label "Revision/Pendiente"
           gh issue comment $ISSUE_URL --body "$var_review_users"
+          gh issue edit $ISSUE_URL --add-project "$VAR_PROJECT_NAME_REVIEWERS_ISSUES"
