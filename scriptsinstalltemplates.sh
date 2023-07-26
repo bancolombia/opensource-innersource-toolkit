@@ -21,6 +21,7 @@ done
 #enable Discussions and Wiki
 gh repo edit --enable-discussions --enable-wiki --enable-projects=true
 
+echo $VAR_NAME_REPOSITORY
 #gh project create --owner $VAR_NAME_REPOSITORY_OWNER --title "BacklogFirstReview" 
 gh api \
   --method POST \
