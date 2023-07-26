@@ -1,5 +1,5 @@
 ESvar='ES'
-if [[ ${VAR_TEMPLATE_LANGUAGE,,} == *"$ESvar"* ]];
+if [[ ${VAR_TEMPLATE_LANGUAGE} == *"$ESvar"* ]];
 then
     echo "list labels in spanish"
     url_file_labels="https://raw.githubusercontent.com/bancolombia/action-innersource-toolkit/main/Templates/Configurations/labels-ES.txt"
