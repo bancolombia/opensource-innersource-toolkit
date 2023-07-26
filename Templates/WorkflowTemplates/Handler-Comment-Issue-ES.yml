@@ -20,7 +20,7 @@ jobs:
           CMD_ASIGN_ISSUE: "/asignarme"
           CMD_GR_ISSUE: "/gr"
           VAR_USERS_REVIEWERS: "${{ vars.VAR_USERS_REVIEWERS_ISSUES }}"
-          #GITHUB_TOKEN: ${{ secrets.PERSONAL_GITHUB_TOOKEN }}
+          #GITHUB_TOKEN: ${{ secrets.PERSONAL_GITHUB_TOKEN }}
         run: |
           if [[ ${VAR_USERS_REVIEWERS,,} =~ ${USER_COMMENT,,} ]];    
           then

@@ -13,7 +13,7 @@ We have communication channels enabled in the official github repository or writ
 Note: Your GitHub token will need to have read/write access to the repository
 1. Copy the below example workflow to your repository and put it in the `.github/workflows/` directory with the file extension `.yml` (ie. `.github/workflows/toolkit.yml`)
 
-### Example workflow
+### Example workflow with personal token
 
 ```yaml
 name: Toolkit InnerSource-OpenSource
@@ -26,10 +26,40 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
         with:
-          token: ${{ secrets.PERSONAL_GITHUB_TOOKEN }}
+          token: ${{ secrets.PERSONAL_GITHUB_TOKEN }}
       - id: testToolkit
         uses: bancolombia/opensource-innersource-toolkit@main
         with:
-          GH_TOKEN: ${{ secrets.PERSONAL_GITHUB_TOOKEN }}
+          GH_TOKEN: ${{ secrets.PERSONAL_GITHUB_TOKEN }}
           TYPE_REPOSITORY: 'innersource'
+          USERS_REVIEWERS: '@user1 @user2'
+          TEMPLATE_LANGUAGE: 'EN'
+```
+### Example workflow with GitHub App token
+
+```yaml
+name: Toolkit InnerSource-OpenSource
+on: workflow_dispatch
+jobs:
+  build-repo:
+    runs-on: ubuntu-latest
+    name: Download tools and templates Innersource-Opensource
+    steps:
+      - name: Generate a token
+        id: generate_token
+        uses: tibdex/github-app-token@v1
+        with:
+          app_id: ${{ secrets.APP_ID_ADMIN_GITHUB }}
+          private_key: ${{ secrets.APP_PRIVATE_KEY_ADMIN_GITHUB }}
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          token: ${{ steps.generate_token.outputs.token }}
+      - id: testToolkit
+        uses: bancolombia/opensource-innersource-toolkit@main
+        with:
+          GH_TOKEN: ${{ steps.generate_token.outputs.token }}
+          TYPE_REPOSITORY: 'innersource'
+          USERS_REVIEWERS: '@user1 @user2'
+          TEMPLATE_LANGUAGE: 'EN'
 ```
