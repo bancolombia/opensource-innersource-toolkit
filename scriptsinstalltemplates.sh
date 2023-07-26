@@ -24,14 +24,14 @@ done
 gh repo edit --enable-discussions --enable-wiki
 
 #Download template issues
-arrayIssueTemplates=("1-report-issue" "2-request-new-feature" "3-documentation" "config")
+arrayIssueTemplates=("1-report-issue" "2-request-new-feature" "3-documentation")
 mkdir -p .github/ISSUE_TEMPLATE/
 for filetemplate in "${arrayIssueTemplates[@]}"
 do
     wget -O .github/ISSUE_TEMPLATE/$filetemplate.md https://raw.githubusercontent.com/bancolombia/action-innersource-toolkit/main/Templates/IssueTemplates/$filetemplate-$VAR_TEMPLATE_LANGUAGE.md
 done
 
-wget -O .github/ISSUE_TEMPLATE/config.yml https://raw.githubusercontent.com/bancolombia/action-innersource-toolkit/main/Templates/IssueTemplates/config-$VAR_TEMPLATE_LANGUAGE..yml
+wget -O .github/ISSUE_TEMPLATE/config.yml https://raw.githubusercontent.com/bancolombia/action-innersource-toolkit/main/Templates/IssueTemplates/config-$VAR_TEMPLATE_LANGUAGE.yml
 
 awk -v texttoreplace="@RepositoryName" -v textnew="$VAR_NAME_REPOSITORY" '{gsub(texttoreplace,textnew)} 1' ".github/ISSUE_TEMPLATE/config.yml" > tempfile && mv tempfile ".github/ISSUE_TEMPLATE/config.yml"
 
