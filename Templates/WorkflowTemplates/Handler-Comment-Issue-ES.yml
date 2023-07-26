@@ -9,33 +9,37 @@ env:
   COMMENT: ${{ github.event.comment.body }}
 jobs:
   issue_commented:
-    # Comentarios en Issues
+    # comments in Issues
     name: Issue comment
     runs-on: ubuntu-latest
     steps:
-      - name: Leer comentarios y Ejecutar acciones
+      - name: Generate a token of Github APP
+        id: generate_token
+        uses: tibdex/github-app-token@v1
+        with:
+          app_id: ${{ secrets.APP_ID_ADMIN_GITHUB }}
+          private_key: ${{ secrets.APP_PRIVATE_KEY_ADMIN_GITHUB }}
+      - name: Read comments and execute actions
         id: RunWorkFlow
         env:
           CMD_ACCEPT_REVIEW: "/revision aprobada"
           CMD_ASIGN_ISSUE: "/asignarme"
-          CMD_GR_ISSUE: "/gr"
           VAR_USERS_REVIEWERS: "${{ vars.VAR_USERS_REVIEWERS_ISSUES }}"
-          #GITHUB_TOKEN: ${{ secrets.PERSONAL_GITHUB_TOKEN }}
+          VAR_PROJECT_NAME_TO_WORK: "${{ vars.VAR_PROJECT_NAME_TO_WORK }}"
+          GITHUB_TOKEN: ${{ steps.generate_token.outputs.token }}
+          #GITHUB_TOKEN: ${{ secrets.PERSONAL_GITHUB_TOKEN }} #Use to personal tooken
         run: |
-          if [[ ${VAR_USERS_REVIEWERS,,} =~ ${USER_COMMENT,,} ]];    
+          if [[ ${COMMENT,,} == *"$CMD_ACCEPT_REVIEW"* ]];
           then
-            if [[ ${COMMENT,,} == *"$CMD_ACCEPT_REVIEW"* ]];
+            if [[ ${VAR_USERS_REVIEWERS,,} =~ ${USER_COMMENT,,} ]];    
             then
               gh issue edit $ISSUE_URL --remove-label "Revision/Pendiente"
               gh issue edit $ISSUE_URL --add-label "Revision/Aprobada"
+              gh issue edit $ISSUE_URL --add-project "$VAR_PROJECT_NAME_TO_WORK"
+              gh issue comment $ISSUE_URL --body "El issue fue aprobado y movido a backlog para empezar a trabajar. Si estas interesado en trabajar en este issue, tu puedes asignartelo facilmente con el comentario /asignarme."
+            else
+              gh issue comment $ISSUE_URL --body "El usuario no tiene permisos para aprobar el issue"
             fi
-            #if [[ ${COMMENT,,} == *"$CMD_GR_ISSUE"* ]];
-            #then
-            #  echo "Creacion de project"
-            #  gh issue edit $ISSUE_URL --add-project "backlog work"
-            #fi
-          else
-            gh issue comment $ISSUE_URL --body "El usuario no tiene permisos suficientes para aprobar el issue"
           fi
           if [[ ${COMMENT,,} == *"$CMD_ASIGN_ISSUE"* ]];
           then
