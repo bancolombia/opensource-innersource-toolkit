@@ -1,10 +1,9 @@
-#ls
 if [[ ${VAR_TEMPLATE_LANGUAGE,,} == *"ES"* ]];
 then
-    echo "Templates in spanish"
+    echo "list labels in spanish"
     url_file_labels="https://raw.githubusercontent.com/bancolombia/action-innersource-toolkit/main/Templates/Configurations/labels-ES.txt"
 else
-    echo "Templates in english"
+    echo "list labels in english"
     url_file_labels="https://raw.githubusercontent.com/bancolombia/action-innersource-toolkit/main/Templates/Configurations/labels-EN.txt"
 fi
 
@@ -21,20 +20,39 @@ do
 done
 
 #enable Discussions and Wiki
-#gh repo edit --enable-discussions --enable-wiki
+gh repo edit --enable-discussions --enable-wiki
 
-arrayIssueTemplates=("1-report-issue" "2-request-new-feature" "3-documentation")
 #Download template issues
+arrayIssueTemplates=("1-report-issue" "2-request-new-feature" "3-documentation" "config")
+mkdir -p .github/ISSUE_TEMPLATE/
 for filetemplate in "${arrayIssueTemplates[@]}"
 do
-    if [[ -f ".github/ISSUE_TEMPLATE/$filetemplate.md" ]];
+    wget -O .github/ISSUE_TEMPLATE/$filetemplate.md https://raw.githubusercontent.com/bancolombia/action-innersource-toolkit/main/Templates/IssueTemplates/$filetemplate-$VAR_TEMPLATE_LANGUAGE.md
+done
+
+wget -O .github/ISSUE_TEMPLATE/config.yml https://raw.githubusercontent.com/bancolombia/action-innersource-toolkit/main/Templates/IssueTemplates/config-$VAR_TEMPLATE_LANGUAGE..yml
+
+#Download documentation
+arrayDocumentationTemplates=("CONTRIBUTING" "README" "GOVERNANCE")
+for filetemplate in "${arrayDocumentationTemplates[@]}"
+do
+    if [[ -f "$filetemplate.md" ]];
     then
-        echo "El archivo $filetemplate.md existe"
+        echo "the file $filetemplate.md exist"
     else
-        echo "El archivo $filetemplate.md no existe"
-        wget -O .github/ISSUE_TEMPLATE/$filetemplate.md https://raw.githubusercontent.com/bancolombia/action-innersource-toolkit/main/Templates/IssueTemplates/$filetemplate-$VAR_TEMPLATE_LANGUAGE.md
+        echo "the file $filetemplate.md not exist"
+        wget -O $filetemplate.md https://raw.githubusercontent.com/bancolombia/opensource-innersource-toolkit/main/Templates/Documentation/$filetemplate-$VAR_TEMPLATE_LANGUAGE.md
     fi
 done
+
+wget -O Roles-$VAR_TEMPLATE_LANGUAGE.png https://raw.githubusercontent.com/bancolombia/opensource-innersource-toolkit/main/Templates/Documentation/Roles-$VAR_TEMPLATE_LANGUAGE.png
+
+#download automations workflow
+mkdir -p .github/workflows/
+wget -O .github/workflows/Handler-Comment-Issues.yml https://raw.githubusercontent.com/bancolombia/action-innersource-toolkit/main/Templates/WorkflowTemplates/Handler-Comment-Issues.yml
+wget -O .github/workflows/Handler-Issue-Creation.yml https://raw.githubusercontent.com/bancolombia/action-innersource-toolkit/main/Templates/WorkflowTemplates/Handler-Issue-Creation.yml
+
+gh variable set VAR_USERS_REVIEWERS_ISSUES --body "$USERS_REVIEWERS"
 
 #push changues
 git config user.name bot-bancolombia-toolkit
@@ -42,10 +60,4 @@ git config user.email oficina_open_source@bancolombia.com.co
 git add .
 git commit -m "Upload Changues bot action bancolombia toolkit innersource"
 git push
-
-#mkdir -p .github/ISSUE_TEMPLATE/
-#wget -O .github/ISSUE_TEMPLATE/1-reportar-error.md https://raw.githubusercontent.com/bancolombia/action-innersource-toolkit/main/Templates/IssueTemplates/1-reportar-error.md
-#wget -O .github/ISSUE_TEMPLATE/2-solicitar-nueva-funcionalidad-o-mejora.md https://raw.githubusercontent.com/bancolombia/action-innersource-toolkit/main/Templates/IssueTemplates/2-solicitar-nueva-funcionalidad-o-mejora.md
-#wget -O .github/ISSUE_TEMPLATE/3-documentacion.md https://raw.githubusercontent.com/bancolombia/action-innersource-toolkit/main/Templates/IssueTemplates/3-documentacion.md
-#wget -O .github/ISSUE_TEMPLATE/config.yml https://raw.githubusercontent.com/bancolombia/action-innersource-toolkit/main/Templates/IssueTemplates/config.yml
 

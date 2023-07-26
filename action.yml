@@ -21,6 +21,7 @@ runs:
   steps:
     - run: |
            echo "${{ github.action_path }}" >> $GITHUB_PATH
+           echo "${{ github.repository }}"
       shell: bash
     - name: install templates and workflows
       env:
