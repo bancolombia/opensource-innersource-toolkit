@@ -23,7 +23,7 @@ gh repo edit --enable-discussions --enable-wiki
 
 #create project
 
-gh project --owner @me create --title "BacklogFirstReview" 
+gh project --owner glhl86 create --title "BacklogFirstReview" 
 
 #Download template issues
 arrayIssueTemplates=("1-report-issue" "2-request-new-feature" "3-documentation")
