@@ -27,10 +27,9 @@ gh repo edit --enable-discussions --enable-wiki --enable-projects=true
 #Create project to reviews
 REPO_NAME=$(gh repo view $VAR_NAME_REPOSITORY --json name --jq '.name')
 
-PROJECT_NAME=$(gh repo view Backlog/Reviews-$REPO_NAME --json name --jq '.name')
+PROJECT_NAME=$(gh project list --json name --jq '.name')
 
-projects=$(gh project list -R $VAR_NAME_REPOSITORY_OWNER)
-echo $projects
+echo $PROJECT_NAME
 #gh project create --owner $VAR_NAME_REPOSITORY_OWNER --title "Backlog/Reviews-$REPO_NAME" 
 #gh project create --owner $VAR_NAME_REPOSITORY_OWNER --title "Backlog/ToWork-$REPO_NAME" 
 
