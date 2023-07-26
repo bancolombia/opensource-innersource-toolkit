@@ -19,11 +19,11 @@ do
 done
 
 #enable Discussions and Wiki
-#gh repo edit --enable-discussions --enable-wiki
+gh repo edit --enable-discussions --enable-wiki
 
 #create project
 
-gh project --owner @me create --title "BacklogFirstReview2" 
+gh project create --owner @me --title "BacklogFirstReview2" 
 
 #Download template issues
 arrayIssueTemplates=("1-report-issue" "2-request-new-feature" "3-documentation")
