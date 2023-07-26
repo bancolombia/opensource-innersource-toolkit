@@ -10,13 +10,15 @@ fi
 #Add labels
 curl -s "$url_file_labels" | while IFS= read -r line;
 do
-   echo "$line"
-   IFS_antiguo=$IFS
-   IFS=";" 
-   read -ra partes <<< "$line"
-   IFS=$IFS_antiguo
-   gh label create "${partes[0]}" --description "${partes[1]}" --color "${partes[2]}" -f
-   echo "${partes[0]}"
+   if [[ $line != "" ]];
+   then
+    IFS_antiguo=$IFS
+    IFS=";" 
+    read -ra partes <<< "$line"
+    IFS=$IFS_antiguo
+    gh label create "${partes[0]}" --description "${partes[1]}" --color "${partes[2]}" -f
+    echo "${partes[0]}"
+   fi
 done
 
 #enable Discussions and Wiki
