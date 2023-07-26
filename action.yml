@@ -29,5 +29,6 @@ runs:
         VAR_TEMPLATE_LANGUAGE: ${{ inputs.TEMPLATE_LANGUAGE }}
         VAR_TYPE_REPOSITORY: ${{ inputs.TYPE_REPOSITORY }}
         VAR_NAME_REPOSITORY: ${{ github.repository }}
+        VAR_NAME_REPOSITORY_OWNER: ${{ github.repository_owner }}
       run: scriptsinstalltemplates.sh
       shell: bash

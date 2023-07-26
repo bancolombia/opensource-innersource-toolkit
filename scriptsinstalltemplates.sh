@@ -20,22 +20,8 @@ done
 
 #enable Discussions and Wiki
 gh repo edit --enable-discussions --enable-wiki
-
-#create project
-gh api graphql -f query='
-  mutation{
-    createProjectV2(
-      input: {
-        ownerId: "glhl86",
-        title: "BacklogFirstReview2"
-      }
-    ){
-      projectV2 {
-        id
-      }
-     }
-  }'
-#gh project create --owner monalisa --title "BacklogFirstReview2" 
+echo "owner $VAR_NAME_REPOSITORY_OWNER"
+gh project create --owner $VAR_NAME_REPOSITORY_OWNER --title "BacklogFirstReview" 
 
 #Download template issues
 arrayIssueTemplates=("1-report-issue" "2-request-new-feature" "3-documentation")
