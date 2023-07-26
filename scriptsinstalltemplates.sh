@@ -30,11 +30,10 @@ REPO_NAME=$(gh repo view $VAR_NAME_REPOSITORY --json name --jq '.name')
 #gh project create --owner $VAR_NAME_REPOSITORY_OWNER --title "Backlog/Reviews-$REPO_NAME" 
 #gh project create --owner $VAR_NAME_REPOSITORY_OWNER --title "Backlog/ToWork-$REPO_NAME" 
 variables=$(gh variable list -R $VAR_NAME_REPOSITORY)
-# Filtrar la lista de secretos por nombre usando 'jq'
-variable_name="VAR_PROJECT_NAME_REVIEWERS_ISSUES"
-filtered_variebles=$(echo "$variables" | jq --arg name "$variable_name" '.[] | select(.name == $name)')
-# Mostrar el resultado del filtrado
-echo "variable nombre $filtered_variebles"
+if [[ ${variables,,} =~ ${"VAR_PROJECT_NAME_REVIEWERS_ISSUES",,} ]];    
+then
+    echo "el project existe"
+if
 
 gh variable set VAR_PROJECT_NAME_REVIEWERS_ISSUES --body "Backlog/Reviews-$REPO_NAME"
 gh variable set VAR_PROJECT_NAME_TO_WORK --body "Backlog/ToWork-$REPO_NAME"
