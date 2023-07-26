@@ -33,7 +33,7 @@ variables=$(gh variable list -R $VAR_NAME_REPOSITORY)
 if [[ ${variables,,} =~ ${"VAR_PROJECT_NAME_REVIEWERS_ISSUES",,} ]];    
 then
     echo "el project existe"
-if
+fi
 
 gh variable set VAR_PROJECT_NAME_REVIEWERS_ISSUES --body "Backlog/Reviews-$REPO_NAME"
 gh variable set VAR_PROJECT_NAME_TO_WORK --body "Backlog/ToWork-$REPO_NAME"
