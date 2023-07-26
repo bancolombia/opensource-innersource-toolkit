@@ -22,7 +22,19 @@ done
 gh repo edit --enable-discussions --enable-wiki
 
 #create project
-curl -X POST -H "Authorization: Bearer $GH_TOKEN" -d '{"query": "mutation { createProject(input: { name: \"BacklogFirstReview\" repositoryId: \"bancolombia/OPS_TemplateRepositoryInnerSource\" }) { project { id } } }" }' https://api.github.com/graphql
+gh api graphql -f query='
+  mutation{
+    createProjectV2(
+      input: {
+        ownerId: "glhl86",
+        title: "BacklogFirstReview2"
+      }
+    ){
+      projectV2 {
+        id
+      }
+     }
+  }'
 #gh project create --owner monalisa --title "BacklogFirstReview2" 
 
 #Download template issues
