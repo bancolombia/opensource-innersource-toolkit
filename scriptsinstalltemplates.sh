@@ -55,7 +55,7 @@ wget -O .github/ISSUE_TEMPLATE/config.yml https://raw.githubusercontent.com/banc
 awk -v texttoreplace="@RepositoryName" -v textnew="$VAR_NAME_REPOSITORY" '{gsub(texttoreplace,textnew)} 1' ".github/ISSUE_TEMPLATE/config.yml" > tempfile && mv tempfile ".github/ISSUE_TEMPLATE/config.yml"
 
 #Download documentation
-arrayDocumentationTemplates=("CONTRIBUTING" "README" "GOVERNANCE" "GETTINGSTARTED" "CODE-OF-CONDUCT")
+arrayDocumentationTemplates=("CONTRIBUTING" "README" "GOVERNANCE" "GETTINGSTARTED" "CODE-OF-CONDUCT" "NOTICE")
 for filetemplate in "${arrayDocumentationTemplates[@]}"
 do
     if [[ -f "$filetemplate.md" ]];
