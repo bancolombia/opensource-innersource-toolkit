@@ -1,0 +1,10 @@
+Doc;Improvements or additions to the documentation.;#0075ca
+Duplicate;Issue already exists;#cfd3d7
+Error;Report something not working;#d73a4a
+Easy;An easy and simple issue to start contributions;#7057ff
+Invalid;The reported issue is not correct;#e4e669
+Improvement;New feature or request;#a2eeef
+Question;Further information is requested;#d876e3
+Review/Pending;Initial stage of the issue to evaluate its approval;#D4C5F9
+Review/Approved;Indicates that the issue or PR is ready to be worked on;#0E8A16
+
