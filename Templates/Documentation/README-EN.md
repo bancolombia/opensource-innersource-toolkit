@@ -19,7 +19,7 @@ This is for purposes of ease of search from the organizational tools
 * Link to the contribution agreement document [Contribution Guide](CONTRIBUTING.md).
 * Guide to Adapt local environment [Guide to Start](GETTINGSTARTED.md).
 * Governance Model [Governance Model](GOVERNANCE.md)
-
+* Code of conduct [code-of-conduct.md](CODE-OF-CONDUCT.md)
 ## Communications channel
 In the following link (link to the channel) you can subscribe to our channel to be aware of the new features added.
 ## Related repositories
