@@ -1,9 +1,0 @@
-Doc;Mejoras o adiciones a la documentación.;#0075ca
-Duplicado;El issue ya existe;#cfd3d7
-Error;Reporte de algo que no funciona;#d73a4a
-Facil;Un issue facil y sencillo para iniciar contribucciones;#7057ff
-Invalido;El issue reportado no es correcto;#e4e669
-Mejora;Nueva caracteristica o solicitud;#a2eeef
-Pregunta;Further information is requested;#d876e3
-Revision/Pendiente;Etapa inicial del issue para evaluar su aprobación;#D4C5F9
-Revision/Aprobada;Indica que el issue o PR esta listo para ser trabajado;#0E8A16
