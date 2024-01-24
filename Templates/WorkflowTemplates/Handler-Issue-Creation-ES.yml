@@ -24,4 +24,3 @@ jobs:
         run: |
           gh issue edit $ISSUE_URL --add-label "Revision/Pendiente"
           gh issue comment $ISSUE_URL --body "Asignado para revisar a: $var_review_users"
-          gh issue edit $ISSUE_URL --add-project "$VAR_PROJECT_NAME_REVIEWERS_ISSUES"

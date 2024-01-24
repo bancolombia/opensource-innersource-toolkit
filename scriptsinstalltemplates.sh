@@ -35,9 +35,9 @@ then
     echo "Projects Backlog/Reviews and Backlog/ToWork already exist"
 else
     echo "Toolkit will create projects"
-    gh project create --owner $VAR_NAME_REPOSITORY_OWNER --title "Backlog/Reviews-$REPO_NAME" 
+    #gh project create --owner $VAR_NAME_REPOSITORY_OWNER --title "Backlog/Reviews-$REPO_NAME" 
     gh project create --owner $VAR_NAME_REPOSITORY_OWNER --title "Backlog/ToWork-$REPO_NAME" 
-    gh variable set VAR_PROJECT_NAME_REVIEWERS_ISSUES --body "Backlog/Reviews-$REPO_NAME"
+    #gh variable set VAR_PROJECT_NAME_REVIEWERS_ISSUES --body "Backlog/Reviews-$REPO_NAME"
     gh variable set VAR_PROJECT_NAME_TO_WORK --body "Backlog/ToWork-$REPO_NAME"
 fi
 
