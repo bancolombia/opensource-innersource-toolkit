@@ -84,7 +84,19 @@ else
     gh variable set VAR_USERS_REVIEWERS_ISSUES --body "$VAR_USERS_REVIEWERS"
 fi
 
+
 #push changues
+branch_name="feature/toolkit_io_integration"
+if git show-ref --quiet refs/remotes/origin/$branch_name; then
+    echo "La rama $branch_name existe en el repositorio."
+    git push --delete origin $branch_name
+else
+    echo "La rama $branch_name no existe en el repositorio."
+fi
+
+git branch $branch_name
+git checkout $branch_name
+
 git config user.name bot-bancolombia-toolkit
 git config user.email oficina_open_source@bancolombia.com.co
 git add .
