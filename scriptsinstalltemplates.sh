@@ -8,7 +8,7 @@
 #     url_file_labels="https://raw.githubusercontent.com/bancolombia/action-innersource-toolkit/main/Templates/Configurations/labels-EN.txt"
 # fi
 #Delete labels
-gh label list | awk '{print $1}' | while IFS= read -r line; do gh label delete $line -y; done
+gh label list | awk '{print $1}' | while IFS= read -r line; do gh label delete $line --yes; done
 
 # #Add labels
 # curl -s "$url_file_labels" | while IFS= read -r line;
